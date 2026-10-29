@@ -4,6 +4,7 @@ import { useEffect, useRef, useState } from "react";
 import type { FormEvent } from "react";
 import Image from "next/image";
 import { AnimatePresence, motion } from "framer-motion";
+import { BrandLogo } from "@/components/brand-logo";
 
 const reveal = {
   hidden: { opacity: 0, y: 28 },
@@ -125,41 +126,37 @@ const faqs = [
 
 const heroSlides = [
   {
-    eyebrow: "YOUR STORY, BEAUTIFULLY CELEBRATED",
-    heading: "Crafting Memorable",
+    eyebrow: "Every event has a story waiting to unfold. We turn your ideas into celebrations with their own character and purpose.",
+    heading: "IT ALL STARTS WITH AN IDEA.",
     emphasis: "Weddings",
     caption: "Where your story begins",
-    details: "Goa · Wedding celebration",
     video: "https://assets.mixkit.co/videos/40584/40584-720.mp4",
     poster: "https://assets.mixkit.co/videos/40584/40584-thumb-360-0.jpg",
     credit: "Newlyweds walking through a garden",
   },
   {
-    eyebrow: "MADE FOR THE MOMENTS THAT MATTER",
-    heading: "A Moment Made",
+    eyebrow: "From creative concepts to logistics, we bring every element together with a clear plan and a considered approach.",
+    heading: "THE ART IS IN THE DETAILS.",
     emphasis: "For Two",
     caption: "A moment just for two",
-    details: "A day to remember · Couple portraits",
     video: "https://assets.mixkit.co/videos/40601/40601-720.mp4",
     poster: "https://assets.mixkit.co/videos/40601/40601-thumb-360-0.jpg",
     credit: "Happy newlyweds posing",
   },
   {
-    eyebrow: "THOUGHTFUL FROM THE VERY FIRST DETAIL",
-    heading: "Every Detail",
+    eyebrow: "Through careful coordination and seamless execution, we bring every detail to life at the right moment.",
+    heading: "WHERE PLANS BECOME REALITY.",
     emphasis: "In Bloom",
     caption: "Every detail, thoughtfully chosen",
-    details: "The celebration · Décor and design",
     video: "https://assets.mixkit.co/videos/5224/5224-720.mp4",
     poster: "https://assets.mixkit.co/videos/5224/5224-thumb-360-0.jpg",
     credit: "A decorated wedding table",
   },
   {
-    eyebrow: "HERE FOR YOUR HAPPILY EVER AFTER",
-    heading: "Together, Always",
+    eyebrow: "Behind every remarkable occasion is a team working in sync to create an experience that stays with you long after the event ends.",
+    heading: "MADE TO BE REMEMBERED.",
     emphasis: "In Love",
     caption: "Together, in the moment",
-    details: "Wedding day · Newlywed portraits",
     video: "https://assets.mixkit.co/videos/40593/40593-720.mp4",
     poster: "https://assets.mixkit.co/videos/40593/40593-thumb-360-0.jpg",
     credit: "Newlyweds smiling",
@@ -296,9 +293,8 @@ export function SiteHeader() {
 
   return (
     <header className="absolute z-10 top-0 left-0 flex w-full h-[94px] items-center justify-between border-b border-[#e3ba6f]/25 bg-[#090908] px-[7.3%] text-white shadow-[0_8px_24px_rgba(9,9,8,0.16)] max-[760px]:top-[14px] max-[760px]:right-[14px] max-[760px]:left-[14px] max-[760px]:w-auto max-[760px]:h-[78px] max-[760px]:px-[6%] min-[761px]:max-[900px]:h-[78px] min-[761px]:max-[900px]:px-[6%] min-[761px]:max-[1000px]:px-[5%]">
-      <a aria-label="WEDTEC EVENTS home" className="inline-flex flex-col items-center gap-[5px]" href="#home" onClick={closeMenu}>
-        <span className="text-[19px] font-semibold tracking-[0.28em] max-[760px]:text-[17px] min-[761px]:max-[900px]:text-[17px]">WEDTEC</span>
-        <span className="text-[8px] tracking-[0.2em]">EVENTS · MADE WITH MEANING</span>
+      <a aria-label="WEDTEC EVENTS home" className="inline-flex flex-col items-center gap-[5px] h-auto " href="#home" onClick={closeMenu}>
+        <BrandLogo className="h-auto w-[240px] max-sm:w-[158px]" />
       </a>
       <button
         aria-expanded={menuOpen}
@@ -359,30 +355,17 @@ export function HeroSection() {
         </video>
       </div>
       <div className="hero-shade absolute inset-0 max-[760px]:top-[14px] max-[760px]:right-[14px] max-[760px]:left-[14px] max-[760px]:h-[var(--hero-mobile-media-height)] max-[760px]:rounded-xl" />
-      <div className="absolute z-[1] top-[51%] left-1/2 flex -translate-x-1/2 -translate-y-1/2 flex-col items-center gap-3 min-[761px]:max-[900px]:top-[40%] max-[760px]:top-[calc(14px_+_var(--hero-mobile-media-height)_-_42px)] max-[760px]:w-full max-[760px]:gap-2" aria-live="polite">
-        <motion.div
-          className="flex max-w-[calc(100vw-32px)] items-center justify-center gap-[9px] whitespace-nowrap rounded-[3px] border border-white/15 bg-[rgb(25_24_24/64%)] px-[14px] py-[9px] text-[11px] text-white backdrop-blur-[7px] max-[760px]:max-w-[calc(100vw-54px)] max-[760px]:gap-[6px] max-[760px]:overflow-hidden max-[760px]:px-[10px] max-[760px]:py-[7px] max-[760px]:text-[9px]"
-          key={slide.caption}
-          initial={{ opacity: 0, y: 8 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.35 }}
-        >
-          <span>{slide.caption}</span>
-          <span aria-hidden="true" className="text-white/60">·</span>
-          <span>{slide.details}</span>
-        </motion.div>
-        <div className="flex items-center gap-2" role="group" aria-label="Choose a featured wedding video">
+      <div className="absolute z-[1] top-1/2 right-[5%] flex -translate-y-1/2 flex-col items-center gap-[10px] max-[760px]:top-[calc(14px_+_var(--hero-mobile-media-height)*0.5)] max-[760px]:right-[28px]" role="group" aria-label="Choose a featured wedding video">
           {heroSlides.map((item, index) => (
             <button
               aria-label={`Show video ${index + 1}: ${item.caption}`}
               aria-current={index === activeSlide ? "true" : undefined}
-              className={`h-[7px] w-[7px] cursor-pointer rounded-full border border-white/85 p-0 transition-[background-color,transform] duration-[180ms] hover:scale-125 ${index === activeSlide ? "bg-white" : "bg-transparent"}`}
+              className={`h-[10px] w-[10px] cursor-pointer rounded-full border border-white/85 p-0 transition-[background-color,transform] duration-[180ms] hover:scale-125 ${index === activeSlide ? "bg-white" : "bg-transparent"}`}
               key={item.video}
               onClick={() => selectSlide(index)}
               type="button"
             />
           ))}
-        </div>
       </div>
       <div className="absolute z-[1] right-0 bottom-[11%] left-0 mx-auto grid w-[min(1160px,82%)] grid-cols-[1.05fr_1fr] items-end gap-10 min-[761px]:max-[900px]:w-[88%] min-[761px]:max-[900px]:grid-cols-1 min-[761px]:max-[900px]:gap-7 max-[760px]:relative max-[760px]:right-auto max-[760px]:bottom-auto max-[760px]:left-auto max-[760px]:mt-[calc(var(--hero-mobile-media-height)_+_32px)] max-[760px]:w-full max-[760px]:grid-cols-1 max-[760px]:gap-[14px] max-[760px]:text-center">
         <motion.div
@@ -394,15 +377,7 @@ export function HeroSection() {
             visible: { transition: { staggerChildren: 0.16, delayChildren: 0.15 } },
           }}
         >
-          <motion.p
-            className="block text-[9px] tracking-[0.2em] leading-[1.5] mb-[15px] text-white/85 max-[760px]:hidden"
-            key={`${slide.heading}-eyebrow`}
-            initial="hidden"
-            animate="visible"
-            variants={reveal}
-          >
-            {slide.eyebrow}
-          </motion.p>
+    
           <motion.h1
             key={slide.heading}
             initial="hidden"
@@ -412,14 +387,23 @@ export function HeroSection() {
           >
             {slide.heading}
             <br />
-            <em className="font-normal">{slide.emphasis}</em>
+            {/* <em className="font-normal">{slide.emphasis}</em> */}
           </motion.h1>
+                <motion.p
+            className="block text-[14px] tracking-[0.2em] leading-[1.5] mb-[15px] text-white/85 max-[760px]:hidden"
+            key={`${slide.heading}-eyebrow`}
+            initial="hidden"
+            animate="visible"
+            variants={reveal}
+          >
+            {slide.eyebrow}
+          </motion.p>
         </motion.div>
         <div className="flex flex-col gap-6 pb-[5px] max-[760px]:gap-3">
           <div className="grid grid-cols-3 gap-[15px] max-[760px]:gap-[7px]" aria-label="Our planning approach">
-            <div className="flex flex-col gap-[7px] max-[760px]:items-center max-[760px]:gap-1"><strong className="font-serif text-[clamp(15px,1.45vw,21px)] font-normal tracking-[-0.02em] max-[760px]:text-[clamp(11px,3.3vw,14px)] max-[760px]:leading-[1.15]">Wedding planning</strong><span className="text-[10px] leading-[1.45] text-white/85 max-[760px]:text-[clamp(7px,2.15vw,9px)] max-[760px]:leading-[1.25] max-[760px]:text-[#615d55]">From first idea to final detail</span></div>
-            <div className="flex flex-col gap-[7px] max-[760px]:items-center max-[760px]:gap-1"><strong className="font-serif text-[clamp(15px,1.45vw,21px)] font-normal tracking-[-0.02em] max-[760px]:text-[clamp(11px,3.3vw,14px)] max-[760px]:leading-[1.15]">Venue & design</strong><span className="text-[10px] leading-[1.45] text-white/85 max-[760px]:text-[clamp(7px,2.15vw,9px)] max-[760px]:leading-[1.25] max-[760px]:text-[#615d55]">Spaces shaped around you</span></div>
-            <div className="flex flex-col gap-[7px] max-[760px]:items-center max-[760px]:gap-1"><strong className="font-serif text-[clamp(15px,1.45vw,21px)] font-normal tracking-[-0.02em] max-[760px]:text-[clamp(11px,3.3vw,14px)] max-[760px]:leading-[1.15]">Made personal</strong><span className="text-[10px] leading-[1.45] text-white/85 max-[760px]:text-[clamp(7px,2.15vw,9px)] max-[760px]:leading-[1.25] max-[760px]:text-[#615d55]">A celebration that feels like yours</span></div>
+            <div className="flex flex-col gap-[7px] max-[760px]:items-center max-[760px]:gap-1"><strong className="font-serif text-[clamp(15px,1.45vw,21px)] font-normal tracking-[-0.02em] max-[760px]:text-[clamp(11px,3.3vw,14px)] max-[760px]:leading-[1.15]">Personalised planning</strong><span className="text-[10px] leading-[1.45] text-white/85 max-[760px]:text-[clamp(7px,2.15vw,9px)] max-[760px]:leading-[1.25] max-[760px]:text-[#615d55]">From first idea to final detail</span></div>
+            <div className="flex flex-col gap-[7px] max-[760px]:items-center max-[760px]:gap-1"><strong className="font-serif text-[clamp(15px,1.45vw,21px)] font-normal tracking-[-0.02em] max-[760px]:text-[clamp(11px,3.3vw,14px)] max-[760px]:leading-[1.15]">Venue & design</strong><span className="text-[10px] leading-[1.45] text-white/85 max-[760px]:text-[clamp(7px,2.15vw,9px)] max-[760px]:leading-[1.25] max-[760px]:text-[#615d55]">Spaces shaped around your vision</span></div>
+            <div className="flex flex-col gap-[7px] max-[760px]:items-center max-[760px]:gap-1"><strong className="font-serif text-[clamp(15px,1.45vw,21px)] font-normal tracking-[-0.02em] max-[760px]:text-[clamp(11px,3.3vw,14px)] max-[760px]:leading-[1.15]">Seamless execution</strong><span className="text-[10px] leading-[1.45] text-white/85 max-[760px]:text-[clamp(7px,2.15vw,9px)] max-[760px]:leading-[1.25] max-[760px]:text-[#615d55]">Every detail, perfectly in place</span></div>
           </div>
           <div className="flex items-center gap-3 max-[760px]:gap-2">
             <a className="inline-flex min-h-[50px] items-center justify-center gap-[25px] px-[22px] text-[10px] tracking-[0.07em] transition-[background-color,color,transform] duration-200 hover:-translate-y-0.5 min-h-[58px] flex-1 justify-between bg-[#3c000c] px-6 text-[12px] font-semibold tracking-normal hover:bg-[#430914] max-[760px]:min-h-12 max-[760px]:justify-center max-[760px]:gap-[10px] max-[760px]:px-[10px] max-[760px]:text-[clamp(10px,3vw,12px)] max-[760px]:text-white text-white! rounded-2xl" href="#contact">
@@ -440,7 +424,7 @@ export function HeroSection() {
           </div>
         </div>
       </div>
-      <a className="absolute z-[1] bottom-8 left-[7.3%] flex items-center gap-3 text-[8px] tracking-[0.18em] max-[760px]:hidden" href="#work"><span className="h-px w-9 bg-white/70" /> SCROLL TO EXPLORE</a>
+   
     </section>
   );
 }
@@ -457,8 +441,8 @@ export function OurWorkSection() {
   };
 
   return (
-    <section className="overflow-hidden bg-[#ffecd1] py-[100px] md:py-[125px]" id="work">
-      <div className="mx-auto w-[min(1120px,86%)] min-[761px]:max-[1000px]:w-[88%]">
+    <section className="relative overflow-hidden bg-[#ffecd1] py-[100px] md:py-[125px]" id="work">
+      <div className="relative z-[1] mx-auto w-[min(1120px,86%)] min-[761px]:max-[1000px]:w-[88%]">
         <motion.div
           className="mb-10 text-center sm:mb-14"
           initial="hidden"
@@ -557,6 +541,7 @@ export function OurWorkSection() {
           </a>
         </div>
       </div>
+    
     </section>
   );
 }
@@ -1246,8 +1231,7 @@ export function SiteFooter() {
     <footer className="min-h-[120px] bg-[#090908] text-white px-[7.3%] py-[53px] pb-[22px] max-[760px]:min-h-0 max-[760px]:px-[7%] max-[760px]:pt-[37px] max-[760px]:pb-5">
       <div className="grid grid-cols-[1.2fr_1fr_0.8fr_1fr] gap-[35px] pb-[43px] max-[760px]:grid-cols-2 max-[760px]:gap-[30px_18px] max-[760px]:pb-8 min-[761px]:max-[1000px]:grid-cols-2">
         <a aria-label="WEDTEC EVENTS home" className="inline-flex flex-col items-center gap-[5px] justify-self-start self-start" href="#home">
-          <span className="text-[19px] font-semibold tracking-[0.28em] max-[760px]:text-[17px] min-[761px]:max-[900px]:text-[17px]">WEDTEC</span>
-          <span className="text-[8px] tracking-[0.2em]">EVENTS · MADE WITH MEANING</span>
+          <BrandLogo className="h-auto w-[240px] max-sm:w-[158px]" />
         </a>
         <p className="m-0 font-serif text-[18px] leading-[1.5] text-white/65 tracking-[0.04em] max-[760px]:self-start max-[760px]:text-base">Thoughtful celebrations.<br />Lasting memories.</p>
         <div className="flex min-w-0 flex-col items-start gap-[13px] max-[760px]:gap-3">

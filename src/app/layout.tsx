@@ -5,6 +5,10 @@ export const metadata: Metadata = {
   title: "WEDTEC EVENTS | Weddings, thoughtfully created",
   description:
     "Heartfelt wedding planning, thoughtful décor and destination celebrations, made with meaning by WEDTEC EVENTS.",
+  icons: {
+    icon: "/logo/logo.svg",
+    shortcut: "/logo/logo.svg",
+  },
 };
 
 export default function RootLayout({ children }: LayoutProps<"/">) {

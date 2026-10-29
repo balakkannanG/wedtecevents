@@ -7,10 +7,10 @@ export function AboutUsSection() {
   return (
     <section
       aria-labelledby="about-us-heading"
-      className="bg-[#ffecd1] px-[7%] py-16 sm:py-20 lg:py-28"
+      className="relative isolate overflow-hidden bg-[#ffecd1] px-[7%] py-16 sm:py-20 lg:py-28"
       id="about"
     >
-      <div className="mx-auto grid max-w-[1200px] items-center gap-10 md:grid-cols-2 md:gap-14 lg:gap-20">
+      <div className="relative z-10 mx-auto grid max-w-[1200px] items-center gap-10 md:grid-cols-2 md:gap-14 lg:gap-20">
         <motion.div
           className="relative min-h-[320px] overflow-hidden sm:min-h-[420px] lg:min-h-[540px]"
           initial={{ opacity: 0, x: -24 }}
@@ -62,6 +62,19 @@ export function AboutUsSection() {
             </svg>
           </a>
         </motion.div>
+      </div>
+     
+      <div
+        aria-hidden="true"
+        className="pointer-events-none absolute -bottom-[2%] right-[4%] z-0 h-[clamp(8rem,24vw,24rem)] w-[clamp(8rem,24vw,24rem)] opacity-40"
+      >
+        <Image
+          alt=""
+          className="object-contain"
+          fill
+          sizes="(max-width: 640px) 12rem, (max-width: 1024px) 32vw, 30rem"
+          src="/logo/meruncolorlogo.svg"
+        />
       </div>
     </section>
   );

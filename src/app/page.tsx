@@ -15,7 +15,7 @@ import {
 import { AboutUsSection } from "@/components/about-us-section";
 import { UspSection } from "@/components/usp-section";
 import { ViewportReveal } from "@/components/viewport-reveal";
-
+import Image from "next/image";
 export default function Home() {
   return (
     <main>
@@ -23,6 +23,7 @@ export default function Home() {
       <ViewportReveal><HeroSection /></ViewportReveal>
       <ViewportReveal><UspSection /></ViewportReveal>
       <ViewportReveal><AboutUsSection /></ViewportReveal>
+    
       <ViewportReveal><OurWorkSection /></ViewportReveal>
       <ViewportReveal><PlanStrategySection /></ViewportReveal>
       <ViewportReveal><ClientTestimonialsSection /></ViewportReveal>

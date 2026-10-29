@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { BrandLogo } from "@/components/brand-logo";
 
 type LegalSection = {
   heading: string;
@@ -21,13 +22,12 @@ const policyLinks = [
 export function LegalPage({ title, introduction, sections }: LegalPageProps) {
   return (
     <main className="min-h-screen bg-[#ffecd1]">
-      <header className="border-b border-[#e7e1d8] bg-white">
+      <header className="border-b border-[#e3ba6f]/25 bg-[#090908]">
         <div className="mx-auto flex w-[min(1120px,88%)] items-center justify-between gap-5 py-5">
           <Link aria-label="WEDTEC EVENTS home" className="flex flex-col gap-1" href="/">
-            <span className="text-[17px] font-semibold tracking-[0.24em] text-[#3c000c]">WEDTEC</span>
-            <span className="text-[8px] tracking-[0.17em] text-[#77736c]">EVENTS · MADE WITH MEANING</span>
+            <BrandLogo className="h-auto w-[240px] max-sm:w-[158px]" />
           </Link>
-          <Link className="text-[10px] tracking-[0.06em] text-[#3c000c] transition-colors hover:text-[#3c000c]" href="/">
+          <Link className="text-[10px] tracking-[0.06em] text-[#e3ba6f] transition-colors hover:text-white" href="/">
             Back to home
           </Link>
         </div>
