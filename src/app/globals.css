@@ -1,0 +1,105 @@
+@import "tailwindcss";
+
+:root {
+  --primary: #3c000c;
+  --secondary: #e3ba6f;
+  --section-bg: #ffecd1;
+  --ink: var(--primary);
+  --muted: #77736c;
+  --cream: var(--section-bg);
+  --paper: var(--section-bg);
+  --rust: var(--primary);
+}
+
+@theme inline {
+  --color-background: var(--cream);
+  --color-foreground: var(--ink);
+  --font-sans: Arial, Helvetica, sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  background: var(--cream);
+  color: var(--ink);
+  font-family: Arial, Helvetica, sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+button {
+  font: inherit;
+}
+
+.hero-shade {
+  background:
+    linear-gradient(180deg, rgb(22 20 19 / 16%) 0%, transparent 28%, rgb(24 22 21 / 10%) 42%, rgb(20 18 17 / 71%) 100%),
+    linear-gradient(90deg, rgb(24 22 21 / 13%), transparent 65%);
+}
+
+.quote-image {
+  background-image: url("https://images.unsplash.com/photo-1511285560929-80b456fea0bc?auto=format&fit=crop&w=2200&q=85");
+  background-position: center 50%;
+  background-size: cover;
+}
+
+.vendor-image {
+  background-image:
+    linear-gradient(90deg, rgb(31 28 26 / 72%), rgb(31 28 26 / 36%)),
+    url("https://images.unsplash.com/photo-1507504031003-b417219a0fde?auto=format&fit=crop&w=2200&q=85");
+  background-position: center 52%;
+  background-size: cover;
+}
+
+#home {
+  --hero-mobile-media-height: min(72vw, 320px);
+}
+
+@media (max-width: 760px) {
+  #home {
+    background-color: #ffecd1;
+    background-image:
+      radial-gradient(ellipse at 87% 68%, rgb(227 186 111 / 13%) 0 1px, transparent 2px),
+      radial-gradient(ellipse at 91% 75%, transparent 0 35px, rgb(227 186 111 / 18%) 36px 37px, transparent 38px),
+      linear-gradient(145deg, #fff5e3, var(--section-bg));
+  }
+
+  .hero-shade {
+    background: linear-gradient(180deg, rgb(22 20 19 / 8%) 0%, transparent 45%, rgb(20 18 17 / 56%) 100%);
+  }
+}
+
+#faq summary::-webkit-details-marker {
+  display: none;
+}
+
+#faq summary span::after {
+  transform: rotate(90deg);
+  transition: transform 180ms ease;
+}
+
+#faq details[open] summary span::after {
+  transform: rotate(0);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    scroll-behavior: auto !important;
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
